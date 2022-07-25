@@ -31,14 +31,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   CounterController c = Get.put(CounterController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Hello World")),
-      body: Center(
-        child: Obx(() => Text("Clicks: ${c.count}")),
+      body: Column(
+        children: [
+          ElevatedButton(
+              onPressed: () => Get.to(const Screen2()),
+              child: const Text("Go to Screen 2")),
+          Obx(() => Text("Clicks: ${c.count}")),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
