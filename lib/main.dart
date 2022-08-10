@@ -15,9 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.dark(),
       home: const MyHomePage(),
     );
   }
@@ -43,12 +41,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ElevatedButton(
               onPressed: () => Get.to(const Screen2()),
               child: const Text("Go to Screen 2")),
-          Obx(() => Text("Clicks: ${c.count}")),
+          Obx(() {
+            return Text("Clicks: ${c.count}");
+          }),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
+          Get.snackbar("SnackBar", "This is a snackbar of GetX");
           c.increment();
         },
       ),
